@@ -11,7 +11,7 @@ function AppNavigation() {
     return (
 
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Hoe' screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName='Welcome' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="Welcome" component={WelcomeScreen} />
             </Stack.Navigator>

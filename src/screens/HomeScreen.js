@@ -29,7 +29,6 @@ export default function HomeScreen() {
       if (response && response.data && response.data.drinks) {
         const categoryNames = response.data.drinks.map(drink => drink.strCategory);
         setCategories(categoryNames);
-        // After setting categories, fetch recipes for the first category
         if (categoryNames.length > 0) {
           getRecipes(categoryNames[0]);
         }
@@ -37,7 +36,6 @@ export default function HomeScreen() {
     } catch (err) {
       console.log('error', err.message);
       if (err.response && err.response.status === 429) {
-        // If rate limited, retry after a delay using exponential backoff
         await retryAfterDelay(getCategory);
       } else {
         setError(err.message);
@@ -55,7 +53,6 @@ export default function HomeScreen() {
     } catch (err) {
       console.log('error', err.message);
       if (err.response && err.response.status === 429) {
-        // If rate limited, retry after a delay using exponential backoff
         await retryAfterDelay(() => getRecipes(category));
       } else {
         setError(err.message);
